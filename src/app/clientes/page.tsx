@@ -1,7 +1,8 @@
 import NewCustomerButton from "@/components/Buttons/NewCustomerButton";
-import CustomersList from "@/components/CustomersList";
+import CustomersList from "@/components/Lists/CustomersNameList";
 import Filter from "@/components/Filter";
 import NewCustomerModal from "@/components/Modals/NewCustomerModal";
+import CustomersCompleteList from "@/components/Lists/CustomerCompleteList";
 
 export default function Customers() {
     return (
@@ -16,7 +17,7 @@ export default function Customers() {
                 </div>
                 <div className="col-md-9 mt-md-0 mt-5">
                     <Filter />
-
+                    <CustomersCompleteList />
                 </div>
             </div>
             <NewCustomerModal />
