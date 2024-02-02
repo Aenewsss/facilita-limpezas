@@ -21,9 +21,9 @@ const CustomersList = () => {
         <div className="d-flex flex-column gap-4 ">
             {
                 customers?.map(customer => (
-                    <div key={customer.id} className="box-shadow p-2 rounded position-relative px-3">
-                        <p className="position-absolute left-0">{customer.id}</p>
-                        <h3 className="text-center">{customer.name}</h3>
+                    <div key={customer.id} className="box-shadow p-2 rounded position-relative px-4 scale" role="button">
+                        <p className="position-absolute start-0 ms-2">{customer.id}</p>
+                        <h3 className="text-center fw-normal">{customer.name}</h3>
                         {/* <ul>
                             <li><span className="fw-medium">E-mail: </span>{customer.email}</li>
                             <li><span className="fw-medium">Telefone: </span>{customer.phone}</li>
