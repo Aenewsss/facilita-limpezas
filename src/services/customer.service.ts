@@ -1,0 +1,47 @@
+import db from "@/config/database"
+import { ApiRoutesEnum } from "@/enums/api-routes.enum"
+import { HttpMethodsEnum } from "@/enums/http-methods.enum"
+import { ICustomer } from "@/interfaces/customer.interface"
+import { FormatResponse } from "@/utils/format-response.utils"
+
+class CustomerService {
+    async getAllCustomers(): Promise<ICustomer[]> {
+        const response = await fetch(ApiRoutesEnum.CUSTOMERS, {
+            headers: { "Content-Type": "application/json" },
+            method: HttpMethodsEnum.GET,
+        })
+        return await FormatResponse(response)
+    }
+
+    async getCustomerById(id: string) {
+        const response = await fetch(ApiRoutesEnum.CUSTOMERS + `/${id}`, {
+            headers: { "Content-Type": "application/json" },
+            method: HttpMethodsEnum.GET,
+        })
+        return await FormatResponse(response)
+    }
+    async createCustomer(dto: ICustomer) {
+        const response = await fetch(ApiRoutesEnum.CUSTOMERS, {
+            headers: { "Content-Type": "application/json" },
+            method: HttpMethodsEnum.POST,
+            body: JSON.stringify({customer: dto})
+        })
+        return await FormatResponse(response)
+    }
+    async updateCustomer(id: string, dto: ICustomer) {
+        const response = await fetch(ApiRoutesEnum.CUSTOMERS + `/${id}`, {
+            headers: { "Content-Type": "application/json" },
+            method: HttpMethodsEnum.PUT,
+        })
+        return await FormatResponse(response)
+    }
+    async deleteCustomer(id: string) {
+        const response = await fetch(ApiRoutesEnum.CUSTOMERS + `/${id}`, {
+            headers: { "Content-Type": "application/json" },
+            method: HttpMethodsEnum.DELETE,
+        })
+        return await FormatResponse(response)
+    }
+}
+
+export default new CustomerService()

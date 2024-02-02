@@ -1,7 +1,7 @@
 import db from "@/config/database"
 import { ICustomer } from "@/interfaces/customer.interface"
 
-class CustomerService {
+class CustomerApiService {
     async getAllCustomers(): Promise<ICustomer[]> {
         return (await db.query("SELECT * FROM customers")).rows
     }
@@ -27,4 +27,4 @@ class CustomerService {
     }
 }
 
-export default new CustomerService()
+export default new CustomerApiService()
