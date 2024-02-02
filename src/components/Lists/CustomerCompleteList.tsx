@@ -2,6 +2,7 @@
 import { IStore } from "@/interfaces/store.interface";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import CustomerDataForm from "../Forms/CustomerDataForm";
 
 const CustomersCompleteList = () => {
 
@@ -9,9 +10,7 @@ const CustomersCompleteList = () => {
 
     if (!customerSelected) return <p className="text-danger h-100 d-flex align-items-center justify-content-center">Nenhum cliente foi selecionado.</p>
     else return (
-        <div className="d-flex flex-column gap-4 ">
-        
-        </div>
+        <CustomerDataForm />
     );
 
 }
