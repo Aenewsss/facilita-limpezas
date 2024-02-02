@@ -7,13 +7,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'Facilita Limpezas | Admin',
-  description: 'Descubra a excelência em limpezas residenciais ou comerciais. Oferecemos uma variedade de serviços de alta qualidade para garantir que seu espaço esteja impecável e higienizado.',
+  description: 'Descubra a excelência em limpezas residenciais. Oferecemos uma variedade de serviços de alta qualidade para garantir que seu espaço esteja impecável e higienizado.',
   authors: {
     name: "Aenã Martinelli",
     url: "https://aenamartinelli.com.br"
   },
   creator: "Aenã Martinelli",
-  category: "Limpeza Residencial,Limpeza Comercial,Limpeza Pós-Obra,Limpeza de Carpetes e Estofados,Limpeza de Vidros,Limpeza de Fachadas,Tratamento de Pisos,Serviços Especiais de Limpeza"
+  category: "Limpeza Residencial,Limpeza de Carpetes e Estofados,Limpeza de Vidros,Tratamento de Pisos,Serviços Especiais de Limpeza"
 };
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {

@@ -1,6 +1,6 @@
 :root {
   --main-color: rgb(38, 101, 214);
-  --secondary: #F9F9F9;
+  --secondary: #f9f9f9;
 }
 
 * {
@@ -48,6 +48,30 @@ a {
   width: 4px;
 }
 
+.mh-400 {
+  max-height: 300px !important;
+}
+
+.box-shadow {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3),
+    -4px -4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bg-main{
+  background-color: var(--main-color) !important;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.scale {
+  transition: scale 0.4s ease-out;
+}
+
+.scale:hover {
+  scale: 1.04;
+}
 
 .site-fixed {
   bottom: 20px;
