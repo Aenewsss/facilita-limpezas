@@ -26,7 +26,7 @@ const ShortestPathList = () => {
     if (!shortestPath) return <p className="text-danger">Nenhuma rota pode ser calculada. Verifique sua lista de clientes.</p>
     else return (
         <>
-            <table className="table">
+            <table className="table mt-3">
                 <thead>
                     <tr>
                         <th scope="col">Coordenada</th>

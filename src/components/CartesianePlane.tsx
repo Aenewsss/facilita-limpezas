@@ -114,10 +114,20 @@ const CartesianePlane = () => {
                         }
 
                         {/* Legenda  */}
-                        <text fontSize={20} fill={el.location.x == 0 && el.location.y == 0 ? "black" : colors![index]} strokeWidth={5} x={20} y={40 + (index * 30)}>● ({el.location.x}, {el.location.y})</text>
+                        <text fontSize={20} fill={el.location.x == 0 && el.location.y == 0 ? "black" : colors![index]}
+                            strokeWidth={5} x={20} y={40 + (index * 30)}
+                        >
+                            ● {
+                                el.location.x == 0 && el.location.y == 0 && index == 0
+                                    ? "Ponto inicial"
+                                    : el.location.x == 0 && el.location.y == 0 && index == arr.length - 1
+                                        ? "Ponto final"
+                                        : `Ponto ${index} `}
+                            ({el.location.x}, {el.location.y})
+                        </text>
                     </g>
                 )}
-
+                <text fontSize={20} fill={"black"} x={20} y={height - 20}>Total percorrido: {shortestPath?.totalTraveled}</text>
             </svg>
         </div>
     );
