@@ -20,7 +20,7 @@ const CustomersNameList = () => {
         async function getCustomers() {
             dispatch(changeSpinner(true))
             const result = await customerService.getAllCustomers()
-            const filteredList = filterCustomer ? result.filter(el => el.name.toLowerCase().includes(filterCustomer.toLowerCase())) : result
+            const filteredList = filterCustomer ? result.filter(el => el.name.toLowerCase().includes(filterCustomer.toLowerCase()) || el.email.toLowerCase().includes(filterCustomer.toLowerCase()) || el.phone.toLowerCase().includes(filterCustomer.toLowerCase())) : result
             setCustomers(filteredList)
             dispatch(changeCustomerList(filteredList))
             dispatch(changeSpinner(false))
