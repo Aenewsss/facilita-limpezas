@@ -13,7 +13,6 @@ const Spinner = () => {
     useEffect(() => {
         setShowSpinner(visible)
     }, [visible]);
-    console.log(showSpinner)
 
     const spinner = useCallback(() => {
             if (!showSpinner) return null
