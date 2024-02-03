@@ -33,7 +33,7 @@ const customerSlice = createSlice({
         },
         updateCustomerInList(state, action) {
             const listUpdated = state.customersList.map(el => {
-                if(el.id == action.payload.customer.id){
+                if (el.id == action.payload.customer.id) {
                     return {
                         ...action.payload.customer
                     }
@@ -42,9 +42,12 @@ const customerSlice = createSlice({
             state.customersList = listUpdated
             state.customerSelected = CustomerInitialState.customerSelected
             state.editCustomer = CustomerInitialState.editCustomer
+        },
+        filterCustomer(state, action) {
+            state.filterCustomer = action.payload
         }
     },
 })
 
-export const { updateCustomerInList, changeCustomerEmail, changeCustomerLocation, changeCustomerName, changeCustomerPhone, changeCustomerList, changeCustomerSelected, changeEditCustomer, removeCustomerFromList } = customerSlice.actions
+export const { updateCustomerInList, filterCustomer, changeCustomerEmail, changeCustomerLocation, changeCustomerName, changeCustomerPhone, changeCustomerList, changeCustomerSelected, changeEditCustomer, removeCustomerFromList } = customerSlice.actions
 export const customerReducer = customerSlice.reducer;

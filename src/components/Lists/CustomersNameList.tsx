@@ -12,16 +12,17 @@ const CustomersNameList = () => {
 
     const [customers, setCustomers] = useState<ICustomer[]>();
 
-    const { customersList } = useSelector((store: IStore) => store.customer)
+    const { customersList, filterCustomer } = useSelector((store: IStore) => store.customer)
 
     useEffect(() => {
         async function getCustomers() {
             const result = await customerService.getAllCustomers()
-            setCustomers(result)
-            dispatch(changeCustomerList(result))
+            const filteredList = filterCustomer ? result.filter(el => el.name.includes(filterCustomer) || el.email.includes(filterCustomer)) : result
+            setCustomers(filteredList)
+            dispatch(changeCustomerList(filteredList))
         }
         getCustomers()
-    }, [customersList]);
+    }, [customersList, filterCustomer]);
 
     function chooseCustomer(customerId: string) {
         dispatch(changeCustomerSelected(customerId))
