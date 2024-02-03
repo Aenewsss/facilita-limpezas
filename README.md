@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Facilita - Teste técnico</h1> 
 
-## Getting Started
+<h2>Como rodar o projeto?</h2>
+<ul>
+  <li>O projeto está rodando em produção no seguinte domínio: <a target="_blank" href="https://facilitalimpezas.vercel.app">https://facilitalimpezas.vercel.app</a></li>
+  <li>Caso queria rodar o projeto localmente, basta seguir o seguinte passo a passo: </li>
+  <ol>
+    <li>Utilizar a versão 18.17.0 do nodejs</li>
+    <li>Clonar o repositório em sua máquina</li>
+    <li>Instalar os pacotes npm</li>
+    <li>Criar um .env e inserir as variáveis de ambiente que foram enviadas por e-mail</li>
+  </ol>
+</ul>
 
-First, run the development server:
+<hr />
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<h2>Fluxo do Sistema</h2>
+  <ul>
+  <li>Home</li>
+    <ul>
+      <li>Na home você poderá navegar, clicando em cada card, para a página gestão de clientes ou para a página de melhores rotas de atendimento, conforme imagem</li>
+      <img src="public/readme-images/home.png"/>
+    </ul>
+  <li>Gestão de Clientes</li>
+    <p>Nest página será possível criar um novo cliente, filtrar a lista de clientes, visualizar, editar ou excluir um cliente, navegar entre telas e verificar a melhor rota de atendimento.</p>
+    <ul>
+      <li>Navegar entre telas - clicar na tela que deseja na navbar</li>
+      <img src="public/readme-images/navegar-clientes.png"/>
+       <li>Adicionar cliente - clicar no botão + Adicionar Cliente e preencher os dados do formulário</li>
+      <img src="public/readme-images/adicionar-cliente.png"/>
+      <li>Filtrar a lista de clientes - digitar o nome, telefone ou e-mail do cliente no campo demarcado</li>
+      <img src="public/readme-images/filtrar-cliente.png"/>
+        <li>Visualizar um cliente - clique no nome dele</li>
+        <img src="public/readme-images/visualizar-cliente.png"/>
+      <li>Remover cliente - clique no botão Remover Cliente</li>
+        <img src="public/readme-images/remover-cliente.png"/>
+      <li>Alterar dados do cliente - clique no botão Alterar dados do cliente. Isso irá trocar a visualização da ficha e você poderá alterar os dados dele no formulário e salvar</li>
+        <img src="public/readme-images/alterar-cliente.png"/>
+      <li>Visualizar a melhor rota de atendimento - clique no botão Verificar melhor rota de atendimento e o modal de visualização irá aparecer</li>
+        <img src="public/readme-images/botao-modal-rota-cliente.png"/>
+    </ul>  
+  <li>Melhores Rotas</li>
+    <p>Nest página é possível visualizar a melhor rota de atendimento e navegar entre telas</p>
+    <ul>
+      <li>Visualizar rota de atendimento - Somente entrar na página</li>
+      <img src="public/readme-images/melhores-rotas.png"/>
+      <li>Navegar entre telas - clicar na tela que deseja na navbar</li>
+      <img src="public/readme-images/navegar-melhores-rotas.png"/>
+      </ul> 
+  </ul>
+  
+<hr />
+<h2>DDL</h2>
+<code>CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    phone VARCHAR(22) NOT NULL,
+    location JSON NOT NULL
+);</code>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<hr />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h2>Observação</h2>
+<p>O banco de dados postgresql utilizado está armazenado no serviço AWS RDS</p>
