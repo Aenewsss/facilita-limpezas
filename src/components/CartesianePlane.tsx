@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const CartesianePlane = () => {
 
-    const containerRef = useRef(null)
+    const containerRef = useRef<HTMLDivElement>(null)
 
     const { path } = useSelector((store: IStore) => store)
 
