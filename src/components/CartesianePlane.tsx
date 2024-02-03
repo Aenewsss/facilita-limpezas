@@ -82,9 +82,37 @@ const CartesianePlane = () => {
                 </g>
 
                 {/* Pontos (X, Y) do plano  */}
-                {colors!?.length > 0 && shortestPath?.path.map((el, index) =>
+                {colors!?.length > 0 && shortestPath?.path.map((el, index, arr) =>
                     <g key={index}>
+
+                        {/* Aqui serão os pontos X,Y representados no plano cartesiano */}
                         <circle fill={el.location.x == 0 && el.location.y == 0 ? "black" : colors![index]} r={6} cx={checkPointLocation(el.location.x, "X")} cy={checkPointLocation(el.location.y, "Y")} />
+
+                        {/* Esse código é para criar a linha na direção do próximo ponto de atendimento  */}
+                        {arr[index + 1]?.location.x && arr[index + 1]?.location.y &&
+                            <line
+                                x1={checkPointLocation(arr[index + 1].location.x, "X")}
+                                y1={checkPointLocation(arr[index + 1].location.y, "Y")}
+                                x2={checkPointLocation(el.location.x, "X")}
+                                y2={checkPointLocation(el.location.y, "Y")}
+                                stroke={el.location.x == 0 && el.location.y == 0 ? "black" : colors![index]}
+                                strokeWidth={2}
+                            />
+                        }
+
+                        {/* Nessa parte vamos ligar o último ponto até o ponto de partida novamente */}
+                        {
+                            index + 1 == arr.length - 1 &&
+                            <line
+                                x1={checkPointLocation(arr[0].location.x, "X")}
+                                y1={checkPointLocation(arr[0].location.y, "Y")}
+                                x2={checkPointLocation(el.location.x, "X")}
+                                y2={checkPointLocation(el.location.y, "Y")}
+                                stroke={el.location.x == 0 && el.location.y == 0 ? "black" : colors![index]}
+                                strokeWidth={2}
+                            />
+                        }
+
                         {/* Legenda  */}
                         <text fontSize={20} fill={el.location.x == 0 && el.location.y == 0 ? "black" : colors![index]} strokeWidth={5} x={20} y={40 + (index * 30)}>● ({el.location.x}, {el.location.y})</text>
                     </g>
