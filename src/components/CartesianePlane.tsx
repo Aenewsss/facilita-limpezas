@@ -43,8 +43,8 @@ const CartesianePlane = () => {
     }, [containerRef]);
 
     useEffect(() => {
-        setShortestPath(path)
         fillColor()
+        setShortestPath(path)
     }, [path]);
 
     function checkPointLocation(point: number, direction: "X" | "Y") {
@@ -59,8 +59,7 @@ const CartesianePlane = () => {
     }
 
     function fillColor() {
-
-        const colors = shortestPath?.path.map(el => {
+        const colors = path.path.map(el => {
             const randomRed = Number((Math.random() * 255).toFixed(0))
             const randomGreen = Number((Math.random() * 255).toFixed(0))
             const randomBlue = Number((Math.random() * 255).toFixed(0))
@@ -111,11 +110,11 @@ const CartesianePlane = () => {
                 </g>
 
                 {/* Pontos (X, Y) do plano  */}
-                {colors!?.length > 0 && shortestPath?.path.map((el, index, arr) =>
+                {colors?.length > 0 && shortestPath?.path.map((el, index, arr) =>
                     <g key={index}>
 
                         {/* Aqui serão os pontos X,Y representados no plano cartesiano */}
-                        <circle fill={el.location.x == 0 && el.location.y == 0 ? "black" : colors![index]} r={6} cx={checkPointLocation(el.location.x, "X")} cy={checkPointLocation(el.location.y, "Y")} />
+                        <circle fill={el.location.x == 0 && el.location.y == 0 ? "black" : colors[index]} r={6} cx={checkPointLocation(el.location.x, "X")} cy={checkPointLocation(el.location.y, "Y")} />
 
                         {/* Esse código é para criar a linha na direção do próximo ponto de atendimento  */}
                         {arr[index + 1]?.location.x && arr[index + 1]?.location.y &&
@@ -124,7 +123,7 @@ const CartesianePlane = () => {
                                 y1={checkPointLocation(arr[index + 1].location.y, "Y")}
                                 x2={checkPointLocation(el.location.x, "X")}
                                 y2={checkPointLocation(el.location.y, "Y")}
-                                stroke={el.location.x == 0 && el.location.y == 0 ? "black" : colors![index]}
+                                stroke={el.location.x == 0 && el.location.y == 0 ? "black" : colors[index]}
                                 strokeWidth={2}
                             />
                         }
