@@ -3,6 +3,7 @@ import { ICustomer } from "@/interfaces/customer.interface";
 import { IStore } from "@/interfaces/store.interface";
 import customerService from "@/services/customer.service";
 import { changeEditCustomer, updateCustomerInList } from "@/store/slices/customer.slice";
+import { changeSpinner } from "@/store/slices/spinner.slice";
 import { formatarTelefone } from "@/utils/format-phone.util";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,9 +19,14 @@ const CustomerDataForm = () => {
     async function updateCustomer(e: FormEvent) {
         e.preventDefault()
 
+        dispatch(changeSpinner(true))
         const result = await customerService.updateCustomer(customer.id!, customer)
+        dispatch(changeSpinner(false))
 
-        if(result) dispatch(updateCustomerInList(customer))
+        if (result) {
+            dispatch(updateCustomerInList(customer))
+            dispatch(changeEditCustomer(false))
+        }
     }
 
     const cancelEdit = () => dispatch(changeEditCustomer(false))

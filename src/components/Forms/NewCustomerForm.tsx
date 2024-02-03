@@ -4,21 +4,30 @@ import { ApiRoutesEnum } from "@/enums/api-routes.enum";
 import { HttpMethodsEnum } from "@/enums/http-methods.enum";
 import { ICustomer } from "@/interfaces/customer.interface";
 import customerService from "@/services/customer.service";
+import { pushCustomerToList } from "@/store/slices/customer.slice";
+import { changeSpinner } from "@/store/slices/spinner.slice";
 import { formatarTelefone } from "@/utils/format-phone.util";
 import { FormEvent, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const NewCustomerForm = () => {
 
-    const [customer, setCustomer] = useState<ICustomer>({ name: "", email: "", phone: "", location: { x: 0, y: 0 } });
+    const dispatch = useDispatch()
+
+    const [customer, setCustomer] = useState<ICustomer>({ id: "",name: "", email: "", phone: "", location: { x: 0, y: 0 } });
 
     const closeModalRef = useRef<HTMLButtonElement>(null)
-    
+
     async function createCustomer(e: FormEvent) {
         e.preventDefault()
-
+        dispatch(changeSpinner(true))
         const result = await customerService.createCustomer(customer)
-        console.log(result)
-        if(result && closeModalRef.current) closeModalRef.current.click()
+        dispatch(changeSpinner(false))
+        if (result && closeModalRef.current) {
+            customer.id = result.id
+            dispatch(pushCustomerToList(customer))
+            closeModalRef.current.click()
+        }
     }
 
     return (

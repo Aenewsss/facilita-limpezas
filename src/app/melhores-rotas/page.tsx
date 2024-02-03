@@ -8,7 +8,7 @@ export default function BestRoutes() {
 
 
     return (
-        <section className="my-5 container position-relative vh-100">
+        <section className="my-5 container position-relative">
             <h1 className="fw-normal text-center">Facilita | Melhores Rotas</h1>
             <p className="fw-light fs-5 text-center">Esta é a rota mais curta que a a empresa deve percorrer para economizar:</p>
             <CartesianePlane />

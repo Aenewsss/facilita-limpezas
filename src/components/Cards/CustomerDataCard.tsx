@@ -3,8 +3,8 @@ import { ICustomer } from "@/interfaces/customer.interface";
 import { IStore } from "@/interfaces/store.interface";
 import customerService from "@/services/customer.service";
 import { changeEditCustomer, removeCustomerFromList } from "@/store/slices/customer.slice";
-import { formatarTelefone } from "@/utils/format-phone.util";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { changeSpinner } from "@/store/slices/spinner.slice";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const CustomerDataCard = () => {
@@ -16,9 +16,11 @@ const CustomerDataCard = () => {
     const [customer, setCustomer] = useState<ICustomer>({ id: "", name: "", email: "", phone: "", location: { x: 0, y: 0 } });
 
     async function deleteCustomer() {
+        dispatch(changeSpinner(true))
         const result = await customerService.deleteCustomer(customer.id!)
+        dispatch(changeSpinner(false))
 
-        if(result) dispatch(removeCustomerFromList(customer.id))
+        if (result) dispatch(removeCustomerFromList(customer.id))
     }
 
     const editCustomer = () => dispatch(changeEditCustomer(true))

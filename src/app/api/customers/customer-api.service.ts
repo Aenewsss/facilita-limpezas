@@ -10,13 +10,13 @@ class CustomerApiService {
         return (await db.query(`SELECT * FROM customers WHERE id = ${id}`)).rows
     }
     async createCustomer(dto: ICustomer) {
-        return await db.query(`
+        return (await db.query(`
             INSERT INTO customers (name, email, phone, location)
             VALUES ('${dto.name}', '${dto.email}', '${dto.phone}','${JSON.stringify(dto.location)}')
-        `)
+            RETURNING id
+        `)).rows[0]
     }
     async updateCustomer(id: string, dto: ICustomer) {
-        console.log(id,dto)
         return await db.query(`
             UPDATE customers 
             SET name = '${dto.name}', email = '${dto.email}', phone = '${dto.phone}', location = '${JSON.stringify(dto.location)}'

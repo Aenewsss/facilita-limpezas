@@ -2,7 +2,7 @@
 import { IShortestPath } from "@/interfaces/shortest-path.interface";
 import calculationService from "@/services/calculation.service"
 import { changeShortestPath } from "@/store/slices/path.slice";
-import { table } from "console";
+import { changeSpinner } from "@/store/slices/spinner.slice";
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
 
@@ -14,9 +14,11 @@ const ShortestPathList = () => {
 
     useEffect(() => {
         async function getShortestPath() {
+            dispatch(changeSpinner(true))
             const result = await calculationService.getShortestPath()
             dispatch(changeShortestPath(result))
             setShortestPath(result)
+            dispatch(changeSpinner(false))
         }
         getShortestPath()
     }, [])

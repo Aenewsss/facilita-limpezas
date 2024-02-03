@@ -8,7 +8,7 @@ export async function PUT(req: Request) {
         const { customer }: { customer: ICustomer } = await req.json()
         const result = await customerApiService.updateCustomer(customer.id!, customer)
         
-        return NextResponse.json({ newCustomer: result })
+        return NextResponse.json({ result })
     } catch (error) {
         return NextResponse.json({ error: error })
     }
