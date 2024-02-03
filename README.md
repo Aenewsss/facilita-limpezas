@@ -62,4 +62,4 @@
 <hr />
 
 <h2>Observação</h2>
-<p>O banco de dados postgresql utilizado está armazenado no serviço AWS RDS</p>
+<p>O banco de dados postgresql utilizado está armazenado na nuvem no serviço AWS RDS</p>
