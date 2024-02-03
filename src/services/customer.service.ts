@@ -1,4 +1,3 @@
-import db from "@/config/database"
 import { ApiRoutesEnum } from "@/enums/api-routes.enum"
 import { HttpMethodsEnum } from "@/enums/http-methods.enum"
 import { ICustomer } from "@/interfaces/customer.interface"
