@@ -5,7 +5,7 @@
   <li>O projeto está rodando em produção no seguinte domínio: <a target="_blank" href="https://facilitalimpezas.vercel.app">https://facilitalimpezas.vercel.app</a></li>
   <li>Caso queria rodar o projeto localmente, basta seguir o seguinte passo a passo: </li>
   <ol>
-    <li>Utilizar a versão 18.17.0 do nodejs</li>
+    <li>Utilizar a versão 18.17.0 do nodejs e a versão 14.1.0 do Next</li>
     <li>Clonar o repositório em sua máquina</li>
     <li>Instalar os pacotes npm</li>
     <li>Criar um .env e inserir as variáveis de ambiente que foram enviadas por e-mail</li>
