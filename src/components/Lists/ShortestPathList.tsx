@@ -58,7 +58,7 @@ const ShortestPathList = () => {
                 </tbody>
             </table>
 
-            <p>Total percorrido: {shortestPath.totalTraveled}</p>
+            <p>Total percorrido: {shortestPath.totalTraveled.toFixed(2)}</p>
         </>
 
     )

@@ -146,7 +146,7 @@ const CartesianePlane = () => {
                         {getSubtitles(el, index, arr)}
                     </g>
                 )}
-                <text fontSize={20} fill={"black"} x={20} y={height - 20}>Total percorrido: {shortestPath?.totalTraveled}</text>
+                <text fontSize={20} fill={"black"} x={20} y={height - 20}>Total percorrido: {shortestPath?.totalTraveled.toFixed(2)}</text>
             </svg>
         </div>
     );
