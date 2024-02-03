@@ -1,8 +1,10 @@
 "use client"
 import { ICustomer } from "@/interfaces/customer.interface";
 import { IStore } from "@/interfaces/store.interface";
+import calculationService from "@/services/calculation.service";
 import customerService from "@/services/customer.service";
 import { changeEditCustomer, updateCustomerInList } from "@/store/slices/customer.slice";
+import { changeShortestPath } from "@/store/slices/path.slice";
 import { changeSpinner } from "@/store/slices/spinner.slice";
 import { formatarTelefone } from "@/utils/format-phone.util";
 import { FormEvent, useEffect, useRef, useState } from "react";
@@ -26,6 +28,7 @@ const CustomerDataForm = () => {
         if (result) {
             dispatch(updateCustomerInList(customer))
             dispatch(changeEditCustomer(false))
+            dispatch(changeShortestPath(await calculationService.getShortestPath()))
         }
     }
 
