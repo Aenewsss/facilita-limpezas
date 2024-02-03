@@ -5,6 +5,7 @@ import NewCustomerModal from "@/components/Modals/NewCustomerModal";
 import CustomersCompleteList from "@/components/Lists/CustomerCompleteList";
 import Link from "next/link";
 import { PagesPathnameEnum } from "@/enums/pages.enum";
+import ShortestPathModal from "@/components/Modals/ShortestPathModal";
 
 export default function Customers() {
     return (
@@ -26,8 +27,9 @@ export default function Customers() {
                     <CustomersCompleteList />
                 </div>
             </div>
-            <Link href={PagesPathnameEnum.CALCULATION} className="btn btn-success scale mt-4 text-white">Verificar melhor rota de atendimento</Link>
+            <button role="button" data-bs-toggle="modal" data-bs-target="#shortestPathModal"  className="btn btn-success scale mt-4 text-white">Verificar melhor rota de atendimento</button>
             <NewCustomerModal />
+            <ShortestPathModal />
         </section>
     )
 }

@@ -30,6 +30,10 @@ const NewCustomerForm = () => {
         }
     }
 
+    function cleanForm(){
+        setCustomer({ id: "",name: "", email: "", phone: "", location: { x: 0, y: 0 } })
+    }
+
     return (
         <form className="form-group" onSubmit={createCustomer}>
             <div className="modal-body">
@@ -62,7 +66,7 @@ const NewCustomerForm = () => {
                 </div>
             </div>
             <div className="modal-footer border-0">
-                <button ref={closeModalRef} id="button-close-modal" type="button" className="btn btn-secondary"
+                <button onClick={cleanForm} ref={closeModalRef} id="button-close-modal" type="button" className="btn btn-secondary"
                     data-bs-dismiss="modal">Fechar</button>
                 <button type="submit" className="btn btn-primary bg-main">Salvar</button>
             </div>

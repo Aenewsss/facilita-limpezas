@@ -27,8 +27,7 @@ const CartesianePlane = () => {
     useEffect(() => {
         const updateDimensions = () => {
             if (containerRef.current) {
-                // Obtém a largura da div
-                const divWidth = containerRef.current.offsetWidth;
+                const divWidth = containerRef.current.offsetWidth || 500
                 setContainerWidth(divWidth)
                 setHalfWidth(divWidth / 2)
                 setHalfHeight(height / 2)
