@@ -48,14 +48,15 @@ const CartesianePlane = () => {
     }, [path]);
 
     function checkPointLocation(point: number, direction: "X" | "Y") {
+        console.log('\n point:',point, ', direction', direction)
         if (point == 0 && direction == "X") return initialPoint.x
         if (point == 0 && direction == "Y") return initialPoint.y
 
         if (point > 0 && direction == "X") return initialPoint.x + point
         if (point > 0 && direction == "Y") return initialPoint.y - point
 
-        if (point < 0 && direction == "X") return initialPoint.x - point
-        if (point < 0 && direction == "Y") return initialPoint.y + point
+        if (point < 0 && direction == "X") return initialPoint.x + point
+        if (point < 0 && direction == "Y") return initialPoint.y - point
     }
 
     function fillColor() {
