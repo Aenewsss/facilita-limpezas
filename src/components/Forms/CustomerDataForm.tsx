@@ -2,7 +2,7 @@
 import { ICustomer } from "@/interfaces/customer.interface";
 import { IStore } from "@/interfaces/store.interface";
 import customerService from "@/services/customer.service";
-import { changeEditCustomer } from "@/store/slices/customer.slice";
+import { changeEditCustomer, updateCustomerInList } from "@/store/slices/customer.slice";
 import { formatarTelefone } from "@/utils/format-phone.util";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,8 @@ const CustomerDataForm = () => {
         e.preventDefault()
 
         const result = await customerService.updateCustomer(customer.id!, customer)
+
+        if(result) dispatch(updateCustomerInList(customer))
     }
 
     const cancelEdit = () => dispatch(changeEditCustomer(false))

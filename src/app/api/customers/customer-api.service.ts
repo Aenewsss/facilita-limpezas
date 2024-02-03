@@ -16,9 +16,10 @@ class CustomerApiService {
         `)
     }
     async updateCustomer(id: string, dto: ICustomer) {
+        console.log(id,dto)
         return await db.query(`
             UPDATE customers 
-            SET name = '${dto.name}', email = '${dto.email}', phone = '${dto.phone}', location = '${JSON.stringify(dto.location)}')
+            SET name = '${dto.name}', email = '${dto.email}', phone = '${dto.phone}', location = '${JSON.stringify(dto.location)}'
             WHERE id = ${id}
         `)
     }

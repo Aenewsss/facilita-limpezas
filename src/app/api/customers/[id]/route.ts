@@ -3,11 +3,11 @@ import customerService from "../customer-api.service"
 import { NextResponse } from "next/server"
 import customerApiService from "../customer-api.service"
 
-export async function PUT(req: Request, context: any) {
+export async function PUT(req: Request) {
     try {
-        const { params } = context
         const { customer }: { customer: ICustomer } = await req.json()
-        const result = await customerApiService.updateCustomer(params.id, customer)
+        const result = await customerApiService.updateCustomer(customer.id!, customer)
+        
         return NextResponse.json({ newCustomer: result })
     } catch (error) {
         return NextResponse.json({ error: error })
