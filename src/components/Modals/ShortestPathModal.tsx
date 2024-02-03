@@ -1,9 +1,16 @@
+"use client"
 import Link from "next/link";
 import CartesianePlane from "../CartesianePlane";
 import ShortestPathList from "../Lists/ShortestPathList";
 import { PagesPathnameEnum } from "@/enums/pages.enum";
+import { useRouter } from "next/navigation";
 
 const ShortestPathModal = () => {
+
+    const route = useRouter()
+    
+    const goToCalculationPage = () => route.push(PagesPathnameEnum.CALCULATION)
+    
     return (
         <div className="modal fade text-black" id="shortestPathModal" data-bs-backdrop="static" data-bs-keyboard="false"
             tabIndex={-1} aria-labelledby="shortestPathModal" aria-hidden="true">
@@ -21,7 +28,7 @@ const ShortestPathModal = () => {
                     <div className="modal-footer border-0">
                         <button id="button-close-modal" type="button" className="btn btn-secondary"
                             data-bs-dismiss="modal">Fechar</button>
-                        <Link href={PagesPathnameEnum.CALCULATION} className="btn btn-primary bg-main text-white">Ver página completa</Link>
+                        <button onClick={goToCalculationPage} data-bs-dismiss="modal" className="btn btn-primary bg-main text-white">Ver página completa</button>
 
                     </div>
                 </div>
