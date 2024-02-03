@@ -13,7 +13,7 @@ class CustomerService {
         return await FormatResponse(response)
     }
 
-    async getCustomerById(id: string) {
+    async getCustomerById(id: string): Promise<ICustomer> {
         const response = await fetch(ApiRoutesEnum.CUSTOMERS + `/${id}`, {
             headers: { "Content-Type": "application/json" },
             method: HttpMethodsEnum.GET,

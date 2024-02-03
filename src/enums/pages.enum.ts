@@ -7,5 +7,5 @@ export enum PagesEnum {
 export enum PagesPathnameEnum {
     HOME = "/",
     CUSTOMERS = "/clientes",
-    CALCULATION = "/melhores-rota",
+    CALCULATION = "/melhores-rotas",
 }

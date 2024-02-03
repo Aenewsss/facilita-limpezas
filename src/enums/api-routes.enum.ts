@@ -1,3 +1,4 @@
 export enum ApiRoutesEnum {
-    CUSTOMERS = "/api/customers"
+    CUSTOMERS = "/api/customers",
+    CALCULATION = "/api/calculation",
 }
