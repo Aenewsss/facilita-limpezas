@@ -1,5 +1,6 @@
 "use client"
 
+import { IPoint } from "@/interfaces/point.interface";
 import { IShortestPath } from "@/interfaces/shortest-path.interface";
 import { IStore } from "@/interfaces/store.interface";
 import { useEffect, useRef, useState } from "react";
@@ -70,6 +71,35 @@ const CartesianePlane = () => {
         setColors(colors)
     }
 
+    function getSubtitles(point: IPoint, index: number, arr: any[]) {
+        const screenWidth = window.innerWidth
+        if (screenWidth >= 992) {
+            return <text fontSize={20} fill={point.location.x == 0 && point.location.y == 0 ? "black" : colors![index]}
+                strokeWidth={5} x={20} y={40 + (index * 30)}
+            >
+                ● {
+                    point.location.x == 0 && point.location.y == 0 && index == 0
+                        ? "Ponto inicial"
+                        : point.location.x == 0 && point.location.y == 0 && index == arr.length - 1
+                            ? "Ponto final"
+                            : `Ponto ${index} `}
+                ({point.location.x}, {point.location.y})
+            </text>
+        } else {
+            return <text fontSize={14} fill={point.location.x == 0 && point.location.y == 0 ? "black" : colors![index]}
+                strokeWidth={5} x={20} y={40 + (index * 20)}
+            >
+                ● {
+                    point.location.x == 0 && point.location.y == 0 && index == 0
+                        ? "Início"
+                        : point.location.x == 0 && point.location.y == 0 && index == arr.length - 1
+                            ? "Final"
+                            : `${index} `}
+                ({point.location.x}, {point.location.y})
+            </text>
+        }
+    }
+
     return (
         <div ref={containerRef} >
             <svg width="100%" height={height}>
@@ -114,17 +144,7 @@ const CartesianePlane = () => {
                         }
 
                         {/* Legenda  */}
-                        <text fontSize={20} fill={el.location.x == 0 && el.location.y == 0 ? "black" : colors![index]}
-                            strokeWidth={5} x={20} y={40 + (index * 30)}
-                        >
-                            ● {
-                                el.location.x == 0 && el.location.y == 0 && index == 0
-                                    ? "Ponto inicial"
-                                    : el.location.x == 0 && el.location.y == 0 && index == arr.length - 1
-                                        ? "Ponto final"
-                                        : `Ponto ${index} `}
-                            ({el.location.x}, {el.location.y})
-                        </text>
+                        {getSubtitles(el, index, arr)}
                     </g>
                 )}
                 <text fontSize={20} fill={"black"} x={20} y={height - 20}>Total percorrido: {shortestPath?.totalTraveled}</text>
