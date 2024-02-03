@@ -1,9 +1,10 @@
+import { PagesPathnameEnum } from "@/enums/pages.enum";
 import Image from "next/image";
 import Link from "next/link";
 
 const RouteCalculationCard = () => {
     return (
-        <Link href="https://aenamartinelli.com.br" className="w-40 scale box-shadow overflow-hidden rounded ">
+        <Link href={PagesPathnameEnum.CALCULATION} className="w-40 scale box-shadow overflow-hidden rounded ">
             <Image className="img-fluid mh-400  object-fit-cover" fill quality={100} src="/locations.jpg" alt="Mapa" />
             <div className="p-3">
                 <h2 className="fw-normal">Facilita | Melhores Rotas </h2>

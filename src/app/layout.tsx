@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReduxProvider from "@/providers/redux.provider";
+import Navbar from "@/components/Navbar/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
         </head>
 
         <body className={inter.className}>
+          <Navbar />
           {children}
           {/* <ToastContainer
           position="top-left"
