@@ -1,16 +1,18 @@
 "use client"
 import { IShortestPath } from "@/interfaces/shortest-path.interface";
+import { IStore } from "@/interfaces/store.interface";
 import calculationService from "@/services/calculation.service"
 import { changeShortestPath } from "@/store/slices/path.slice";
 import { changeSpinner } from "@/store/slices/spinner.slice";
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ShortestPathList = () => {
 
     const dispatch = useDispatch()
-    
+
     const [shortestPath, setShortestPath] = useState<IShortestPath>();
+    const { path } = useSelector((store: IStore) => store)
 
     useEffect(() => {
         async function getShortestPath() {
@@ -22,6 +24,11 @@ const ShortestPathList = () => {
         }
         getShortestPath()
     }, [])
+
+    useEffect(() => {
+        setShortestPath(path)
+    }, [path]);
+
 
     if (!shortestPath) return <p className="text-danger">Nenhuma rota pode ser calculada. Verifique sua lista de clientes.</p>
     else return (
