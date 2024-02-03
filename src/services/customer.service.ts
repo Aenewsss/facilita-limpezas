@@ -10,6 +10,7 @@ class CustomerService {
             headers: { "Content-Type": "application/json" },
             method: HttpMethodsEnum.GET,
         })
+        console.log("\n line 13", response)
         return await FormatResponse(response)
     }
 
