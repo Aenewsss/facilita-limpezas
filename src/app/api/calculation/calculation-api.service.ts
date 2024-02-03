@@ -5,7 +5,6 @@ import { IPoint } from "@/interfaces/point.interface"
 class CalculationApiService {
     getShortestPath(customers: ICustomer[]) {
         const initialPoint: IPoint = { location: { x: 0, y: 0 } }
-
         const path: IPoint[] = [initialPoint]
         const unvisitedCustomers: IPoint[] = customers.slice().map(el => ({ location: el.location, userId: el.id, userName: el.name }))
 
@@ -16,7 +15,6 @@ class CalculationApiService {
 
             for (const point of unvisitedCustomers) {
                 const distance = this.mathFormulaToCalcDistance(lastPoint.location, point.location)
-
                 if (distance < shortestDistance) {
                     nearestPoint = { ...point, distanceFromLastPoint: distance }
                     shortestDistance = distance
@@ -24,7 +22,8 @@ class CalculationApiService {
             }
 
             path.push(nearestPoint)
-            unvisitedCustomers.splice(unvisitedCustomers.indexOf(nearestPoint), 1)
+            const currentPoint = unvisitedCustomers.filter(el => el.userId == nearestPoint.userId)[0]
+            unvisitedCustomers.splice(unvisitedCustomers.indexOf(currentPoint), 1)
         }
 
         path.push({ ...initialPoint, distanceFromLastPoint: this.mathFormulaToCalcDistance(initialPoint.location, path[path.length - 1].location) })
