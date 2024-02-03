@@ -22,9 +22,17 @@ const customerSlice = createSlice({
         },
         changeCustomerSelected(state, action) {
             state.customerSelected = state.customersList.filter(el => el.id == action.payload)[0]
-        }
-    }
+        },
+        changeEditCustomer(state,action){
+            state.editCustomer = action.payload
+        },
+        removeCustomerFromList(state,action){
+            const withoutDeleted = state.customersList.filter(el => el.id !== action.payload)
+            state.customersList = withoutDeleted
+            state.customerSelected = CustomerInitialState.customerSelected
+        },
+    },
 })
 
-export const { changeCustomerEmail, changeCustomerLocation, changeCustomerName, changeCustomerPhone, changeCustomerList, changeCustomerSelected } = customerSlice.actions
+export const { changeCustomerEmail, changeCustomerLocation, changeCustomerName, changeCustomerPhone, changeCustomerList, changeCustomerSelected, changeEditCustomer,removeCustomerFromList } = customerSlice.actions
 export const customerReducer = customerSlice.reducer;

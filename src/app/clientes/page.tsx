@@ -7,16 +7,20 @@ import CustomersCompleteList from "@/components/Lists/CustomerCompleteList";
 export default function Customers() {
     return (
         <section className="my-5 container position-relative vh-100">
-            <h1 className="fw-normal text-center">Facilita | Clientes</h1>
-            <div className="row flex-md-row flex-column-reverse">
-                <div className="col-md-3">
-                    <div className="d-flex flex-column gap-3 mt-2">
-                        <NewCustomerButton />
-                        <CustomersList />
-                    </div>
+            <h1 className="fw-normal text-center">Facilita | Gestão de Clientes</h1>
+            <div className="row mt-4">
+                <div className="col-md-3 d-flex align-items-center">
+                    <NewCustomerButton />
                 </div>
-                <div className="col-md-9 mt-md-0 mt-5">
+                <div className="col-md-9">
                     <Filter />
+                </div>
+            </div>
+            <div className="row mt-4 bg-whiteo6 box-shadow">
+                <div className="col-md-3 border border-end border-3 border-0">
+                    <CustomersList />
+                </div>
+                <div className="col-md-9">
                     <CustomersCompleteList />
                 </div>
             </div>

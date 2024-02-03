@@ -2,11 +2,14 @@
 import { ICustomer } from "@/interfaces/customer.interface";
 import { IStore } from "@/interfaces/store.interface";
 import customerService from "@/services/customer.service";
+import { changeEditCustomer } from "@/store/slices/customer.slice";
 import { formatarTelefone } from "@/utils/format-phone.util";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const CustomerDataForm = () => {
+
+    const dispatch = useDispatch()
 
     const { customerSelected } = useSelector((store: IStore) => store.customer)
 
@@ -16,19 +19,16 @@ const CustomerDataForm = () => {
         e.preventDefault()
 
         const result = await customerService.updateCustomer(customer.id!, customer)
-
     }
 
-    async function deleteCustomer() {
-
-    }
+    const cancelEdit = () => dispatch(changeEditCustomer(false))
 
     useEffect(() => {
         setCustomer(customerSelected!)
     }, [customerSelected]);
 
     return (
-        <div className="box-shadow mt-3 p-2 rounded">
+        <div className="p-2 rounded">
             <h2 className="fw-normal fs-3 my-3">Ficha do cliente</h2>
             <form className="form-group" onSubmit={updateCustomer}>
                 <div className="form-floating mb-3">
@@ -58,9 +58,12 @@ const CustomerDataForm = () => {
                         </div>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary bg-main">Editar cliente</button>
+                <div className="d-flex gap-2">
+                    <button onClick={cancelEdit} className="btn btn-danger">Cancelar</button>
+                    <button type="submit" className="btn btn-primary bg-main">Salvar alterações</button>
+                </div>
             </form>
-        </div>
+        </div >
 
     );
 }

@@ -61,6 +61,10 @@ a {
   background-color: var(--main-color) !important;
 }
 
+.bg-whiteo6{
+  background-color: rgb(250,250,250);
+}
+
 .btn-create{
   top: 25%;
   left: -10px;

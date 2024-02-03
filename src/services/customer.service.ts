@@ -32,6 +32,7 @@ class CustomerService {
         const response = await fetch(ApiRoutesEnum.CUSTOMERS + `/${id}`, {
             headers: { "Content-Type": "application/json" },
             method: HttpMethodsEnum.PUT,
+            body: JSON.stringify({customer: dto})
         })
         return await FormatResponse(response)
     }

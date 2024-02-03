@@ -17,7 +17,7 @@ const NewCustomerForm = () => {
         e.preventDefault()
 
         const result = await customerService.createCustomer(customer)
-
+        console.log(result)
         if(result && closeModalRef.current) closeModalRef.current.click()
     }
 

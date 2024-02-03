@@ -14,9 +14,8 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
     try {
         const { customer } = await req.json()
-        console.log('18', customer)
         const result = await customerApiService.createCustomer(customer)
-        NextResponse.json({ newCustomer: result })
+        return NextResponse.json({ result })
     } catch (error) {
         return NextResponse.json({ error: 'Erro ao tentar cadastrar cliente' })
     }

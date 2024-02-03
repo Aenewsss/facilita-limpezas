@@ -12,5 +12,5 @@ export const CustomerInitialState: ICustomerRedux = {
             y: 0,
         },
     }],
-
+    editCustomer: false
 }
