@@ -1,8 +1,10 @@
 "use client"
 import { ICustomer } from "@/interfaces/customer.interface";
 import { IStore } from "@/interfaces/store.interface";
+import calculationService from "@/services/calculation.service";
 import customerService from "@/services/customer.service";
 import { changeEditCustomer, removeCustomerFromList } from "@/store/slices/customer.slice";
+import { changeShortestPath } from "@/store/slices/path.slice";
 import { changeSpinner } from "@/store/slices/spinner.slice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +22,10 @@ const CustomerDataCard = () => {
         const result = await customerService.deleteCustomer(customer.id!)
         dispatch(changeSpinner(false))
 
-        if (result) dispatch(removeCustomerFromList(customer.id))
+        if (result) {
+            dispatch(removeCustomerFromList(customer.id))
+            dispatch(changeShortestPath(await calculationService.getShortestPath()))
+        }
     }
 
     const editCustomer = () => dispatch(changeEditCustomer(true))

@@ -3,8 +3,10 @@
 import { ApiRoutesEnum } from "@/enums/api-routes.enum";
 import { HttpMethodsEnum } from "@/enums/http-methods.enum";
 import { ICustomer } from "@/interfaces/customer.interface";
+import calculationService from "@/services/calculation.service";
 import customerService from "@/services/customer.service";
 import { pushCustomerToList } from "@/store/slices/customer.slice";
+import { changeShortestPath } from "@/store/slices/path.slice";
 import { changeSpinner } from "@/store/slices/spinner.slice";
 import { formatarTelefone } from "@/utils/format-phone.util";
 import { FormEvent, useRef, useState } from "react";
@@ -26,6 +28,7 @@ const NewCustomerForm = () => {
         if (result && closeModalRef.current) {
             customer.id = result.id
             dispatch(pushCustomerToList(customer))
+            dispatch(changeShortestPath(await calculationService.getShortestPath()))
             closeModalRef.current.click()
         }
     }
