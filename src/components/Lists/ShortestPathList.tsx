@@ -1,17 +1,21 @@
 "use client"
 import { IShortestPath } from "@/interfaces/shortest-path.interface";
 import calculationService from "@/services/calculation.service"
+import { changeShortestPath } from "@/store/slices/path.slice";
 import { table } from "console";
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux";
 
 const ShortestPathList = () => {
 
+    const dispatch = useDispatch()
+    
     const [shortestPath, setShortestPath] = useState<IShortestPath>();
 
     useEffect(() => {
         async function getShortestPath() {
             const result = await calculationService.getShortestPath()
-            console.log(result)
+            dispatch(changeShortestPath(result))
             setShortestPath(result)
         }
         getShortestPath()
@@ -31,18 +35,18 @@ const ShortestPathList = () => {
                 <tbody>
                     {shortestPath.path.map((el, index, arr) => (
                         index == 0
-                            ? <tr>
+                            ? <tr key={index}>
                                 <td>X = {el.location.x}, Y = {el.location.y}</td>
                                 <td>Ponto inicial</td>
                                 <td></td>
                             </tr>
                             : index == arr.length - 1
-                                ? <tr>
+                                ? <tr key={index}>
                                     <td>X = {el.location.x}, Y = {el.location.y}</td>
                                     <td>Ponto final</td>
                                     <td>{el.distanceFromLastPoint}</td>
                                 </tr>
-                                : <tr>
+                                : <tr key={index}>
                                     <td>X = {el.location.x}, Y = {el.location.y}</td>
                                     <td>{el.userName}</td>
                                     <td>{el.distanceFromLastPoint}</td>

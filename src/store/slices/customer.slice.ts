@@ -5,18 +5,6 @@ const customerSlice = createSlice({
     name: 'customer',
     initialState: CustomerInitialState,
     reducers: {
-        changeCustomerName(state, action) {
-
-        },
-        changeCustomerEmail(state, action) {
-            state.customersList[action.payload.index].email = action.payload.email;
-        },
-        changeCustomerPhone(state, action) {
-            state.customersList[action.payload.index].phone = action.payload.phone;
-        },
-        changeCustomerLocation(state, action) {
-            state.customersList[action.payload.index].location = action.payload.location;
-        },
         changeCustomerList(state, action) {
             state.customersList = action.payload;
         },
@@ -49,5 +37,5 @@ const customerSlice = createSlice({
     },
 })
 
-export const { updateCustomerInList, filterCustomer, changeCustomerEmail, changeCustomerLocation, changeCustomerName, changeCustomerPhone, changeCustomerList, changeCustomerSelected, changeEditCustomer, removeCustomerFromList } = customerSlice.actions
+export const { updateCustomerInList, filterCustomer, changeCustomerList, changeCustomerSelected, changeEditCustomer, removeCustomerFromList } = customerSlice.actions
 export const customerReducer = customerSlice.reducer;

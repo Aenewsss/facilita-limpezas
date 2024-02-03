@@ -4,5 +4,5 @@ export interface ICustomerRedux {
     customersList: ICustomer[];
     customerSelected?: ICustomer;
     editCustomer?: boolean;
-    filterCustomer?: string
+    filterCustomer?: string;
 }
