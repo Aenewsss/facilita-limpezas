@@ -17,12 +17,12 @@ class CustomerApiService {
         `)).rows[0]
     }
     async updateCustomer(id: string, dto: ICustomer) {
-        return (await db.query(`
+        return await db.query(`
             UPDATE customers 
             SET name = '${dto.name}', email = '${dto.email}', phone = '${dto.phone}', location = '${JSON.stringify(dto.location)}'
             WHERE id = ${id}
             RETURNING id
-        `)).rows[0]
+        `)
     }
     async deleteCustomer(id: string) {
         return await db.query(`DELETE FROM customers WHERE id = ${id}`)
